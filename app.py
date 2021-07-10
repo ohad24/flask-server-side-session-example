@@ -10,7 +10,7 @@ from flask_login import (
     login_required,
     logout_user,
 )
-from flask_socketio import SocketIO
+from flask_socketio import SocketIO, emit
 from flask_session import Session
 from datetime import timedelta
 from time import time
@@ -72,6 +72,25 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for("index"))
+
+
+@app.route("/send_message")
+def send_message():
+    message = request.args.get("message", str)
+    send_my_event({"message": message})
+    return {}
+
+
+@socketio.on("from-cli")
+def send_my_event(message):
+    print("received messag (from-cli): " + message)
+    emit("send-to-browser", message, namespace="/", broadcast=True)
+
+
+@socketio.on("my event")
+def handle_message(data):
+    print("received message (my event): " + data.get("data"))
+    send_my_event("from python")
 
 
 if "__main__" == __name__:
