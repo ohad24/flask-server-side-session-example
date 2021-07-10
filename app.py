@@ -17,9 +17,10 @@ from time import time
 import redis
 
 app = Flask(__name__)
-app.secret_key = "1234"  # os.environ['SECRET_KEY']
+app.secret_key = "1234"
 login_manager = LoginManager()
 login_manager.init_app(app)
+app.config['SESSION_USE_SIGNER'] = True
 # app.config["SESSION_TYPE"] = "filesystem"
 app.config["SESSION_TYPE"] = "redis"
 app.config['SESSION_REDIS'] = redis.from_url('redis://localhost:6379')
