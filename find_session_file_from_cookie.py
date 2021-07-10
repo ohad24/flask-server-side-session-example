@@ -4,7 +4,7 @@ s = 'session:' + session_cookie_value
 
 def _get_filename(key):
     if isinstance(key, str):
-        key = key.encode("utf-8")  # XXX unicode review
+        key = key.encode("utf-8")
     hash = md5(key).hexdigest()
     return hash
 
