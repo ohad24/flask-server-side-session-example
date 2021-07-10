@@ -5,10 +5,13 @@ cachelib==0.2.0
 certifi==2021.5.30
 chardet==4.0.0
 click==8.0.1
+dnspython==1.16.0
 Flask==2.0.1
 Flask-Login==0.5.0
 Flask-Session==0.4.0
 Flask-SocketIO==5.1.0
+greenlet==1.1.0
+h11==0.12.0
 idna==2.10
 itsdangerous==2.0.1
 Jinja2==3.0.1
@@ -21,6 +24,10 @@ python-socketio==5.3.0
 redis==3.5.3
 regex==2021.7.6
 requests==2.25.1
+simple-websocket==0.2.0
+six==1.16.0
 toml==0.10.2
 urllib3==1.26.6
+websocket-client==1.1.0
 Werkzeug==2.0.1
+wsproto==1.0.0
